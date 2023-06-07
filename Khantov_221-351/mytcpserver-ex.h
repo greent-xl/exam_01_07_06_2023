@@ -1,5 +1,5 @@
-#ifndef MYSERVER_H
-#define MYSERVER_H
+#ifndef MYTCPSERVER_EX_H
+#define MYTCPSERVER_EX_H
 #include <QObject>
 #include <QTcpServer>
 #include <QTcpSocket>
@@ -7,7 +7,7 @@
 #include <QtNetwork>
 #include <QByteArray>
 #include <QDebug>
-
+#include <QMap>
 class MyTcpServer : public QObject
 {
     Q_OBJECT
@@ -17,19 +17,15 @@ public:
 public slots:
     void slotNewConnection();
     void slotClientDisconnected();
-
+    void sendToClient(QString);
     void slotServerRead();
     //void slotReadClient();
 private:
+    void parce(QString);
     QTcpServer * mTcpServer;
-    QTcpSocket * mTcpSocket;
+    QVector<QTcpSocket *> user;
+    QMap<QString, int> rooms;
     int server_status;
 };
-#endif // MYSERVER_H
-
-
-
-
-
-
+#endif // MYTCPSERVER_EX_H
 

@@ -1,0 +1,5 @@
+https://hub.docker.com/r/greentxl/khantov_221-351
+
+docker pull greentxl/khantov_221-351
+docker build -t khantov_221-351 .
+docker run khantov_221-351
